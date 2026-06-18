@@ -1,15 +1,37 @@
-import "./globals.css";
+import { Orbitron, Rajdhani } from 'next/font/google'
+import './globals.css'
+
+const orbitron = Orbitron({
+  variable: '--font-orbitron',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+})
+
+const rajdhani = Rajdhani({
+  variable: '--font-rajdhani',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+})
 
 export const metadata = {
-  title: "HACKIFY '26 | WARTECH COMMAND",
-  description: "36-Hour National Sprint operated by IEDC MACE & KSUM",
-};
+  title: 'Hackify 3.O — Hack To Defy',
+  description:
+    'A 36-hour national level war-tech hackathon to predict, protect & rebuild. Presented by IEDC MACE.',
+}
+
+export const viewport = {
+  colorScheme: 'dark',
+  themeColor: '#0a0c08',
+}
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`dark ${orbitron.variable} ${rajdhani.variable} bg-background`}
+    >
       <head>
-        {/* Directly pre-loading Google Fonts so the CSS compiler doesn't crash! */}
+        {/* Preconnect to Google Fonts for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link 
@@ -17,9 +39,9 @@ export default function RootLayout({ children }) {
           rel="stylesheet" 
         />
       </head>
-      <body>
+      <body className="font-sans antialiased">
         {children}
       </body>
     </html>
-  );
+  )
 }

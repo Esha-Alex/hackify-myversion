@@ -1,19 +1,83 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --matrix-grid: radial-gradient(circle, #3D4128 1px, transparent 1px);
 }
 
-body {
-  background-color: #13140a !important;
-  color: #e4e3d1 !important;
-  font-family: 'Space Grotesk', sans-serif;
-  overflow-x: hidden;
+@theme inline {
+  --font-heading: var(--font-orbitron), 'sans-serif';
+  --font-sans:    var(--font-rajdhani), 'sans-serif';
+  --font-mono:    var(--font-orbitron), 'monospace';
+  --color-ring:                var(--ring);
+  --color-input:               var(--input);
+  --color-border:              var(--border);
+  --color-destructive:         var(--destructive);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-accent:              var(--accent);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-muted:               var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary:           var(--secondary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-primary:             var(--primary);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-popover:             var(--popover);
+  --color-card-foreground:     var(--card-foreground);
+  --color-card:                var(--card);
+  --color-foreground:          var(--foreground);
+  --color-background:          var(--background);
+  --radius-sm:  calc(var(--radius) * 0.6);
+  --radius-md:  calc(var(--radius) * 0.8);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-.matrix-overlay {
-  background-image: var(--matrix-grid);
-  background-size: 32px 32px;
+/* Dark theme — always active via .dark on <html> */
+.dark {
+  color-scheme: dark;
+
+  --background:           oklch(0.16 0.018 120);
+  --foreground:           oklch(0.96 0.01  110);
+
+  --card:                 oklch(0.2  0.02  120);
+  --card-foreground:      oklch(0.96 0.01  110);
+
+  --popover:              oklch(0.2  0.02  120);
+  --popover-foreground:   oklch(0.96 0.01  110);
+
+  /*
+   * --primary = LIME GREEN #D8FF7A
+   * oklch(0.93 0.19 118) is the precise oklch match for #D8FF7A.
+   * This is the same colour used on all section headings (Tracks, Timeline,
+   * Footer) which are hardcoded to #D8FF7A. Now the hero inherits the same
+   * colour through text-primary / bg-primary / border-primary tokens.
+   *
+   * Previously this was oklch(0.72 0.16 120) ≈ neon #39FF14.
+   */
+  --primary:              oklch(0.93 0.19 118);   /* #D8FF7A lime-green */
+  --primary-foreground:   oklch(0.18 0.05 120);   /* dark text on lime  */
+
+  --secondary:            oklch(0.28 0.02 120);
+  --secondary-foreground: oklch(0.96 0.01 110);
+
+  --muted:                oklch(0.28 0.02 120);
+  --muted-foreground:     oklch(0.72 0.03 115);
+
+  --accent:               oklch(0.93 0.19 118);
+  --accent-foreground:    oklch(0.18 0.05 125);
+
+  --destructive:          oklch(0.704 0.191 22.216);
+
+  --border:               oklch(0.93 0.19 118 / 18%);
+  --input:                oklch(1    0     0   / 15%);
+  --ring:                 oklch(0.93 0.19 118);
+
+  --radius: 0.625rem;
 }
 
 @keyframes rotate-radar {
@@ -26,11 +90,33 @@ body {
   animation: rotate-radar 6s linear infinite;
 }
 
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+}
+
+/* ─── Legacy utility classes (tracks / timeline / footer) ───────────────── */
+
+/* HUD grid overlay — updated with radial-gradient matrix pattern */
+.matrix-overlay {
+  background-image: var(--matrix-grid);
+  background-size: 32px 32px;
+}
+
 .font-mono-tech {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-orbitron), 'JetBrains Mono', monospace;
 }
 
 .font-stencil-military {
-  font-family: 'Black Ops One', system-ui;
-  letter-spacing: 0.15em;
+  font-family: var(--font-orbitron), system-ui, sans-serif;
+  letter-spacing: 0.06em;
+}
+
+.font-command {
+  font-family: var(--font-rajdhani), 'Space Grotesk', sans-serif;
 }
