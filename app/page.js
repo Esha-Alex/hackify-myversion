@@ -26,23 +26,17 @@ export default function DummyVerificationPage() {
 
       {/* 2. Sponsor Block using LOCAL image */}
       <section id="sponsors" style={{ marginTop: '50px' }}>
-        <div id="Sponsors">
-          <h2>Sponsors</h2>
-        </div>
-        
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-          <a target="_blank" rel="noreferrer noopener" href="https://devfolio.co">
-            <div>
-              {/* Notice the FORWARD slash here! */}
-              <img 
-                alt="Devfolio" 
-                src="/devfolio.png" 
-                style={{ height: '85px', width: 'auto', backgroundColor: '#fff', padding: '10px', borderRadius: '8px' }} 
-              />
-            </div>
-          </a>
-        </div>
-      </section>
+  <h2>Sponsors</h2>
+  <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+    <a href="https://devfolio.co" target="_blank" rel="noreferrer noopener">
+      <img 
+        src="/devfolio.png" 
+        alt="Devfolio" 
+        style={{ height: '85px', width: 'auto', backgroundColor: '#fff', padding: '10px', borderRadius: '8px' }} 
+      />
+    </a>
+  </div>
+</section>
     </div>
   )
 }
