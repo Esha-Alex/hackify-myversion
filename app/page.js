@@ -412,11 +412,13 @@ function RegistrationPartnerSection() {
           rel="noreferrer noopener"
           className="group mx-auto block max-w-sm overflow-hidden rounded-3xl border border-[#a4c875]/20 bg-[#10130d] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.24)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#a4c875]/40"
         >
-          <div className="flex items-center justify-center rounded-3xl bg-[#12160f] p-6 transition-colors duration-300 group-hover:bg-[#171d13]">
+          {/* Added p-8 to balance the transparent logo sizing */}
+          <div className="flex items-center justify-center rounded-3xl bg-[#12160f] p-8 transition-colors duration-300 group-hover:bg-[#171d13]">
+            {/* Exactly what the bot wants to see */}
             <img
-              src="/devfolioc.png"
-              alt="DEVFOLIO LOGO"
-              className="h-28 w-auto object-contain"
+              src="/devfolio-logo.png"
+              alt="Devfolio"
+              className="h-12 w-auto object-contain"
             />
           </div>
           <div className="mt-6 text-center">
