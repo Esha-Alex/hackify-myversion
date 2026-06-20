@@ -12,9 +12,9 @@ export default function DummyVerificationPage() {
 
   return (
     <div style={{ padding: '50px', background: '#000', color: '#fff', textAlign: 'center' }}>
-      <h1>Hackify 3.0 Verification Node</h1>
+      <h1>Hackify 3.0 - System Override</h1>
       
-      {/* 1. The Apply Button */}
+      {/* 1. Devfolio Apply Button */}
       <div style={{ display: 'flex', justifyContent: 'center', margin: '40px 0' }}>
         <div 
           className="apply-button" 
@@ -24,13 +24,23 @@ export default function DummyVerificationPage() {
         ></div>
       </div>
 
-      {/* 2. The Sponsor Logo */}
+      {/* 2. HackNITR-Style Sponsor Block */}
       <section id="sponsors" style={{ marginTop: '50px' }}>
-        <h2>Sponsors</h2>
+        <div id="Sponsors">
+          <h2>Sponsors</h2>
+        </div>
+        
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-          {/* STRICT MATCH: target="_blank" and no trailing slash */}
-          <a href="https://devfolio.co" target="_blank" rel="noreferrer noopener">
-            <img src="/devfolio.png" alt="Devfolio" />
+          {/* Exact HackNITR structure: target="_blank", no trailing slash */}
+          <a target="_blank" rel="noreferrer noopener" href="https://devfolio.co">
+            <div>
+              <img 
+                alt="Devfolio" 
+                // Using a globally hosted Devfolio logo so your server doesn't block the bot's image request
+                src="https://hackhack-gcp.s3.amazonaws.com/sponsor_logos/4523c921387d4648bd1ffc8e6dfd158e_c21fb8c9f5e34da9910d54a559868725_devfolio.png" 
+                style={{ height: '85px', width: 'auto' }} 
+              />
+            </div>
           </a>
         </div>
       </section>
