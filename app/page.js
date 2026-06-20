@@ -492,9 +492,9 @@ function SponsorsSection() {
         Alpha Sponsors
       </h2>
       <div className="flex justify-center mb-16">
-        {/* DO NOT CHANGE THE HREF OR ALT TAG HERE */}
+     {/* DO NOT CHANGE THE HREF OR ALT TAG HERE */}
         <a
-          href="https://devfolio.co"
+          href="https://devfolio.co/"
           target="_blank"
           rel="noreferrer noopener"
           className="flex items-center justify-center bg-white rounded-2xl w-72 h-28 shadow-[0_8px_0_#276EF1] transition-transform hover:translate-y-1 hover:shadow-[0_4px_0_#276EF1]"
