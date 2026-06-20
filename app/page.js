@@ -414,7 +414,7 @@ function RegistrationPartnerSection() {
         >
           <div className="flex items-center justify-center rounded-3xl bg-[#12160f] p-6 transition-colors duration-300 group-hover:bg-[#171d13]">
             <img
-              src="/DEVFOLIOC.jpeg"
+              src="/devfolioc.png"
               alt="DEVFOLIO LOGO"
               className="h-28 w-auto object-contain"
             />
