@@ -390,52 +390,6 @@ function HeroSection() {
   )
 }
 
-
-function RegistrationPartnerSection() {
-  return (
-    {/* Added id="sponsors" right here so the bot can find it */}
-    <section id="sponsors" className="relative z-10 mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 sm:py-20 bg-[#0f110b] border-t border-b border-white/10">
-      <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div className="space-y-4 text-center lg:text-left">
-          {/* Added the word SPONSOR to the label */}
-          <p className="text-[9px] uppercase tracking-[0.38em] text-[#a4c875] font-semibold sm:text-[10px]">
-            PLATFORM SPONSOR & REGISTRATION PARTNER
-          </p>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Devfolio
-          </h2>
-          <p className="max-w-2xl text-sm leading-7 text-[#cec6b4] sm:text-base">
-            DEVFOLIO is the official registration partner and platform sponsor for HACKIFY 3.O, managing team onboarding, registrations, and participant submissions with secure event workflow and seamless organizer support.
-          </p>
-        </div>
-
-        <a
-          href="https://devfolio.co/"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="group mx-auto block max-w-sm overflow-hidden rounded-3xl border border-[#a4c875]/20 bg-[#10130d] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.24)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#a4c875]/40"
-        >
-          <div className="flex items-center justify-center rounded-3xl bg-[#12160f] p-8 transition-colors duration-300 group-hover:bg-[#171d13]">
-            {/* The exact image and alt text the bot needs */}
-            <img
-              src="/devfolio-logo.png"
-              alt="Devfolio"
-              className="h-12 w-auto object-contain"
-            />
-          </div>
-          <div className="mt-6 text-center">
-            <p className="text-sm uppercase tracking-[0.35em] text-[#a4c875]">
-              Visit the registration portal
-            </p>
-            <p className="mt-3 text-sm leading-6 text-[#d7d7c8]">
-              Click the Devfolio logo to open the official registration website and submit your hackathon entry.
-            </p>
-          </div>
-        </a>
-      </div>
-    </section>
-  )
-}
 /* ─────────────────────────────────────────────────────────────────────────── */
 /* TRACKS / STRATEGIC SECTORS — Tactical Grid with Framer Motion              */
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -524,6 +478,68 @@ function TracksSection() {
     </section>
   )
 }
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* sponsership devfolio , for verification purpose         */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+function SponsorsSection() {
+  return (
+    <section id="sponsors" className="relative z-10 mx-auto w-full max-w-5xl px-5 py-24 bg-background text-center">
+      
+      {/* ── ALPHA SPONSORS (MANDATORY FOR DEVFOLIO VERIFICATION) ── */}
+      <h2 className="text-3xl font-bold tracking-wide text-white sm:text-4xl mb-8">
+        Alpha Sponsors
+      </h2>
+      <div className="flex justify-center mb-16">
+        {/* DO NOT CHANGE THE HREF OR ALT TAG HERE */}
+        <a
+          href="https://devfolio.co"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="flex items-center justify-center bg-white rounded-2xl w-72 h-28 shadow-[0_8px_0_#276EF1] transition-transform hover:translate-y-1 hover:shadow-[0_4px_0_#276EF1]"
+        >
+          <img 
+            src="/devfolioc.png" 
+            alt="Devfolio" 
+            className="h-12 w-auto object-contain" 
+          />
+        </a>
+      </div>
+
+      {/* ── BETA SPONSORS ── */}
+      <h2 className="text-2xl font-bold tracking-wide text-[#a4c875] sm:text-3xl mb-8">
+        Beta Sponsors
+      </h2>
+      <div className="flex flex-wrap justify-center gap-6 mb-16">
+        <div className="flex items-center justify-center bg-white rounded-2xl w-64 h-24 shadow-[0_6px_0_#a4c875] transition-transform hover:translate-y-1 hover:shadow-[0_3px_0_#a4c875]">
+          <img src="/KSUMC.jpeg" alt="KSUM" className="h-12 w-auto object-contain mix-blend-multiply" />
+        </div>
+        <div className="flex items-center justify-center bg-white rounded-2xl w-64 h-24 shadow-[0_6px_0_#a4c875] transition-transform hover:translate-y-1 hover:shadow-[0_3px_0_#a4c875]">
+          <img src="/KalkitechC.jpeg" alt="Kalkitech" className="h-12 w-auto object-contain mix-blend-multiply" />
+        </div>
+        <div className="flex items-center justify-center bg-white rounded-2xl w-64 h-24 shadow-[0_6px_0_#a4c875] transition-transform hover:translate-y-1 hover:shadow-[0_3px_0_#a4c875]">
+          <img src="/Electralysys.png" alt="Electralysys" className="h-12 w-auto object-contain mix-blend-multiply" />
+        </div>
+      </div>
+
+      {/* ── GAMMA SPONSORS ── */}
+      <h2 className="text-xl font-bold tracking-wide text-[#FF8C00] sm:text-2xl mb-8">
+        Gamma Sponsors
+      </h2>
+      <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex items-center justify-center bg-white rounded-xl w-56 h-20 shadow-[0_4px_0_#FF8C00] transition-transform hover:translate-y-1 hover:shadow-[0_2px_0_#FF8C00]">
+          <img src="/KeyvalueC.jpeg" alt="KeyValue" className="h-10 w-auto object-contain mix-blend-multiply" />
+        </div>
+        <div className="flex items-center justify-center bg-white rounded-xl w-56 h-20 shadow-[0_4px_0_#FF8C00] transition-transform hover:translate-y-1 hover:shadow-[0_2px_0_#FF8C00]">
+          <img src="/VisionDynamics.jpeg" alt="Vision Dynamics" className="h-10 w-auto object-contain mix-blend-multiply" />
+        </div>
+      </div>
+
+    </section>
+  )
+}
+
 /* ─────────────────────────────────────────────────────────────────────────── */
 /*  TIMELINE SECTION — vertical pipeline with animated liquid fill            */
 /* ─────────────────────────────────────────────────────────────────────────── */
