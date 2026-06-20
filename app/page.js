@@ -11,8 +11,8 @@ export default function DummyVerificationPage() {
   }, []);
 
   return (
-    <div style={{ padding: '50px', background: '#000', color: '#fff', textAlign: 'center', fontFamily: 'sans-serif' }}>
-      <h1>Hackify 3.0 Verification</h1>
+    <div style={{ padding: '50px', background: '#000', color: '#fff', textAlign: 'center' }}>
+      <h1>Hackify 3.0 Verification Node</h1>
       
       {/* 1. The Apply Button */}
       <div style={{ display: 'flex', justifyContent: 'center', margin: '40px 0' }}>
@@ -27,9 +27,12 @@ export default function DummyVerificationPage() {
       {/* 2. The Sponsor Logo */}
       <section id="sponsors" style={{ marginTop: '50px' }}>
         <h2>Sponsors</h2>
-        <a href="https://devfolio.co/">
-          <img src="/devfolio.png" alt="Devfolio" style={{ height: '60px', width: 'auto' }} />
-        </a>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          {/* STRICT MATCH: target="_blank" and no trailing slash */}
+          <a href="https://devfolio.co" target="_blank" rel="noreferrer noopener">
+            <img src="/devfolio.png" alt="Devfolio" />
+          </a>
+        </div>
       </section>
     </div>
   )
