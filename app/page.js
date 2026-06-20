@@ -34,11 +34,11 @@ export default function DummyVerificationPage() {
           {/* Exact HackNITR structure: target="_blank", no trailing slash */}
           <a target="_blank" rel="noreferrer noopener" href="https://devfolio.co">
             <div>
+              {/* Back to your local image! Added a white background so it's visible */}
               <img 
                 alt="Devfolio" 
-                // Using a globally hosted Devfolio logo so your server doesn't block the bot's image request
-                src="https://hackhack-gcp.s3.amazonaws.com/sponsor_logos/4523c921387d4648bd1ffc8e6dfd158e_c21fb8c9f5e34da9910d54a559868725_devfolio.png" 
-                style={{ height: '85px', width: 'auto' }} 
+                src="/devfolioc.png" 
+                style={{ height: '85px', width: 'auto', backgroundColor: '#fff', padding: '10px', borderRadius: '8px' }} 
               />
             </div>
           </a>
