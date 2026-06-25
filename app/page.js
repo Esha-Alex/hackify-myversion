@@ -525,7 +525,7 @@ function TimelineSection() {
         <div className="mb-16 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-[#a4c875] tracking-tight uppercase">Program Timeline</h2>
           <p className="mt-2 font-mono text-[10px] tracking-[0.35em] text-[#a4c875]/60 uppercase">Hackify 3.O</p>
-          <p className="mt-3 text-[#B8B8B8] text-sm">MACE Kothamangalam · 36-Hour Offline Sprint · Oct 1–3, 2026</p>
+          <p className="mt-3 text-[#B8B8B8] text-sm">MACE Kothamangalam · 36-Hour Offline Sprint · Oct 9–11, 2026</p>
         </div> 
 
         {/* ── DESKTOP: vertical pipeline ─────────────────────────────────── */}
