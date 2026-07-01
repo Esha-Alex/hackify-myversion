@@ -110,6 +110,59 @@ const TIMELINE_EVENTS = [
   },
 ]
 
+const FAQ_ITEMS = [
+  {
+    question: 'What is Hackify 3.0?',
+    answer:
+      'Hackify 3.0 is the third edition of the flagship 36-hour national-level hackathon organized by IEDC MACE, bringing together innovators to solve real-world challenges through technology.',
+  },
+  {
+    question: 'Who can participate?',
+    answer:
+      'Students from any recognized college or university are eligible to participate.',
+  },
+  {
+    question: 'Is there any registration fee?',
+    answer:
+      'No. Participation in Hackify 3.0 is completely free.',
+  },
+  {
+    question: 'How will teams be shortlisted?',
+    answer:
+      'Teams will be shortlisted based on the quality of their submitted abstract, problem statement, innovation, feasibility, and relevance to the selected track.',
+  },
+  {
+    question: 'Where can I contact the organizers?',
+    answer:
+      'For queries, participants can reach out through the official Hackify 3.0 communication channels and contact details provided on the event page.',
+  },
+  {
+    question: 'Will accommodation and food be provided?',
+    answer:
+      'Details regarding accommodation and meals will be communicated to shortlisted participants before the event.',
+  },
+  {
+    question: 'Do we need to have a working prototype before the hackathon?',
+    answer:
+      'No. Participants may start with an idea, research, or an existing prototype. However, significant development should take place during the hackathon.',
+  },
+  {
+    question: 'What is the team size limit?',
+    answer:
+      'Teams can consist of 2–4 members.',
+  },
+  {
+    question: 'What should we bring to the venue?',
+    answer:
+      'Participants should bring their laptops, chargers, college ID cards, and any project-specific hardware they intend to use.',
+  },
+  {
+    question: 'Is Hackify 3.0 exclusively a hardware hackathon?',
+    answer:
+      'No. Hackify 3.0 welcomes both hardware and software-based solutions. Teams may develop software, hardware, or hybrid solutions, provided they align with the selected track and address a relevant problem statement.',
+  },
+]
+
 /* ─────────────────────────────────────────────────────────────────────────── */
 /*  HELPERS                                                                    */
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -647,6 +700,69 @@ function TimelineSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────── */
+/* FAQ SECTION                                                               */
+/* ─────────────────────────────────────────────────────────────────────────── */
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  return (
+    <section id="faq" className="relative overflow-hidden border-y border-white/5 bg-[#111] py-24">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(164,200,117,0.03)_0%,transparent_70%)]" />
+
+      <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold uppercase tracking-tight text-[#a4c875] sm:text-4xl">FAQs</h2>
+          <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.35em] text-[#a4c875]/60">Hackify 3.O</p>
+        </div>
+
+        <div className="space-y-4">
+          {FAQ_ITEMS.map((item, index) => {
+            const isOpen = openIndex === index
+
+            return (
+              <div key={item.question} className="overflow-hidden rounded-xl border border-white/10 bg-black/25">
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left sm:gap-4 sm:px-6 sm:py-4"
+                  aria-expanded={isOpen}
+                >
+                  <span className="min-w-0 flex-1 font-heading text-sm font-semibold uppercase tracking-[0.02em] bg-gradient-to-r from-[#F4EBD9] via-[#B9C7A3] to-[#7A9B4F] bg-clip-text text-transparent sm:text-base sm:text-lg">
+                    {item.question}
+                  </span>
+                  <ChevronDown
+                    className={`size-5 shrink-0 text-[#a4c875] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    strokeWidth={2}
+                  />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-4 pb-4 pt-1 sm:px-6 sm:pb-5">
+                        <p className="font-sans text-sm leading-6 break-words bg-gradient-to-r from-[#F4EBD9] via-[#B9C7A3] to-[#7A9B4F] bg-clip-text text-transparent sm:text-base sm:leading-7">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
 /* SCROLL TO TOP BUTTON                                                       */
 /* ─────────────────────────────────────────────────────────────────────────── */
 function ScrollToTop() {
@@ -699,6 +815,7 @@ export default function LandingPage() {
         <HeroSection />
         <TracksSection />
         <TimelineSection />
+        <FAQSection />
         <SiteFooter />
         <ScrollToTop />
       </div>
