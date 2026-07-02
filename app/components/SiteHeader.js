@@ -7,11 +7,10 @@ const NAV_LINKS = [
   { label: 'TRACKS',     href: '/#tracks' },
   { label: 'TIMELINE',   href: '/#timeline' },
   { label: 'SPONSOR US', href: '/sponsors' },
-  { label: 'GALLERY',    href: '/gallery' },
+  { label: 'GALLERY',    href: '/#gallery' },
   { label: 'TEAM',       href: '/team' },
   { label: 'CONTACT',    href: '#contact' },
 ]
-
 export default function SiteHeader() {
   const [open, setOpen] = useState(false)
 

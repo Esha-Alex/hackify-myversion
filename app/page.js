@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import SiteHeader from './components/SiteHeader'
 import Preloader from './components/Preloader'
+import Gallery from './components/gallery'
 /* ─────────────────────────────────────────────────────────────────────────── */
 /*  DATA                                                                       */
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -700,6 +701,90 @@ function TimelineSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────── */
+/*  NEWSLETTER SECTION                                                         */
+/* ─────────────────────────────────────────────────────────────────────────── */
+function NewsletterSection() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!email) return
+
+    setStatus('loading')
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      if (response.ok) {
+        setStatus('success')
+        setEmail('')
+      } else {
+        setStatus('error')
+      }
+    } catch (error) {
+      setStatus('error')
+    }
+  }
+
+  return (
+    <section id="newsletter" className="relative overflow-hidden border-b border-white/5 bg-[#0d1009] py-24">
+      <div className="relative z-10 mx-auto max-w-2xl px-5 text-center sm:px-8">
+        
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold uppercase tracking-tight text-[#a4c875] sm:text-3xl">
+            Intercept Updates
+          </h2>
+          <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.35em] text-[#a4c875]/60">
+            Newsletter Sync // Stay Encrypted
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="mx-auto mt-6 max-w-md">
+          <div 
+            className="flex flex-col gap-3 p-2 bg-black/40 border border-white/10 sm:flex-row sm:items-center"
+            style={{ clipPath: 'polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)' }}
+          >
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="ENTER RECRUIT EMAIL..."
+              disabled={status === 'loading' || status === 'success'}
+              className="w-full bg-transparent px-4 py-3 font-mono text-xs tracking-wider text-white placeholder-gray-600 focus:outline-none disabled:opacity-50"
+            />
+            
+            <button
+              type="submit"
+              disabled={status === 'loading' || status === 'success'}
+              className="inline-flex h-11 items-center justify-center bg-[#a4c875] px-6 font-mono text-xs font-bold tracking-widest text-black transition-all duration-300 hover:bg-[#a4c875]/80 disabled:bg-gray-700 disabled:text-gray-400 shrink-0 uppercase cursor-pointer"
+              style={{ clipPath: 'polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)' }}
+            >
+              {status === 'loading' ? 'SYNCING...' : status === 'success' ? 'SECURED' : 'SUBSCRIBE_'}
+            </button>
+          </div>
+        </form>
+
+        {/* Status Alerts */}
+        <div className="mt-4 h-6 font-mono text-[11px] tracking-wide">
+          {status === 'success' && (
+            <span className="text-[#a4c875]">&gt; ACCESS GRANTED. YOU HAVE BEEN ADDED TO THE INTEL NETWORK.</span>
+          )}
+          {status === 'error' && (
+            <span className="text-[#FF8C00]">&gt; ERROR: UPLINK FAILED. PLEASE TRY AGAIN.</span>
+          )}
+        </div>
+
+      </div>
+    </section>
+  )
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
 /* FAQ SECTION                                                               */
 /* ─────────────────────────────────────────────────────────────────────────── */
 function FAQSection() {
@@ -815,10 +900,12 @@ export default function LandingPage() {
         <HeroSection />
         <TracksSection />
         <TimelineSection />
+      <Gallery />
+      <NewsletterSection />
         <FAQSection />
         <SiteFooter />
         <ScrollToTop />
-      </div>
+        </div>
     </>
   )
 }
