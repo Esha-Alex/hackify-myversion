@@ -12,6 +12,7 @@ import {
 import SiteHeader from './components/SiteHeader'
 import Preloader from './components/Preloader'
 import Gallery from './components/gallery'
+import Newsletter from './components/Newsletter'
 /* ─────────────────────────────────────────────────────────────────────────── */
 /*  DATA                                                                       */
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -203,22 +204,36 @@ function getEventStatus(event) {
 /*  DEVFOLIO BUTTON                                                            */
 /* ─────────────────────────────────────────────────────────────────────────── */
 function DevfolioButton() {
-  useEffect(() => {
-    const oldScript = document.getElementById('devfolio-script');
-    if (oldScript) oldScript.remove();
+  const [mounted, setMounted] = useState(false)
 
-    const script = document.createElement('script');
-    script.id = 'devfolio-script';
-    script.src = 'https://apply.devfolio.co/v2/sdk.js';
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted) return
+
+    // Use setTimeout to ensure the DOM is fully painted before loading the SDK
+    const timeoutId = setTimeout(() => {
+      const oldScript = document.getElementById('devfolio-script');
+      if (oldScript) oldScript.remove();
+
+      const script = document.createElement('script');
+      script.id = 'devfolio-script';
+      script.src = 'https://apply.devfolio.co/v2/sdk.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    }, 0)
     
     return () => {
+      clearTimeout(timeoutId)
       const currentScript = document.getElementById('devfolio-script');
       if (currentScript) currentScript.remove();
     }
-  }, []);
+  }, [mounted])
+
+  if (!mounted) return null
 
   return (
     <div 
@@ -241,13 +256,17 @@ function DevfolioButton() {
 function CountdownInline({ targetDate }) {
   const target = new Date(targetDate).getTime()
   const [time, setTime] = useState(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const updateCountdown = () => setTime(getTimeLeft(target))
     const timeoutId = setTimeout(updateCountdown, 0)
     const intervalId = setInterval(updateCountdown, 1000)
     return () => { clearTimeout(timeoutId); clearInterval(intervalId) }
   }, [target])
+
+  if (!mounted) return null
 
   const units = [
     { label: 'DAYS',    value: time?.days    },
@@ -901,8 +920,10 @@ export default function LandingPage() {
         <TracksSection />
         <TimelineSection />
       <Gallery />
-      <NewsletterSection />
+     
+
         <FAQSection />
+        <Newsletter />
         <SiteFooter />
         <ScrollToTop />
         </div>

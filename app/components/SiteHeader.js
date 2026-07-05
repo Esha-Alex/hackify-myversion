@@ -9,8 +9,11 @@ const NAV_LINKS = [
   { label: 'SPONSOR US', href: '/sponsors' },
   { label: 'GALLERY',    href: '/#gallery' },
   { label: 'TEAM',       href: '/team' },
+  { label: 'NEWSLETTER', href: '/#newsletter' },
+  { label: 'FAQ',        href: '/#faq' },
   { label: 'CONTACT',    href: '#contact' },
 ]
+
 export default function SiteHeader() {
   const [open, setOpen] = useState(false)
 
@@ -19,7 +22,7 @@ export default function SiteHeader() {
       <nav className="mx-auto flex max-w-[1500px] items-center justify-between px-4 py-4 sm:px-8 lg:px-12">
         
         {/* LEFT: IEDC Logo + Hackify Title */}
-<a href="/" className="flex items-center gap-2 sm:gap-4 hover:opacity-80 transition-opacity">
+        <a href="/" className="flex items-center gap-2 sm:gap-4 hover:opacity-80 transition-opacity">
             <img 
               src="/iedc-logo-transparent.png" 
               alt="IEDC Logo" 
@@ -46,7 +49,6 @@ export default function SiteHeader() {
 
         {/* RIGHT: KSUM Logo + Mobile Menu Toggle */}
         <div className="flex items-center gap-3 sm:gap-5">
-          {/* Removed 'hidden sm:block' so it shows on mobile! */}
           <img 
             src="/ksum-logo-transparent.png" 
             alt="KSUM Logo" 
