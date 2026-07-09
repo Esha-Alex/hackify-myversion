@@ -26,7 +26,7 @@ export default function SponsorsPage() {
     { id: 'KAL-01', name: 'KALKITECH', type: 'Grid systems collaborator delivering resilient energy architecture for event operations.', logo: '/KalkitechC.jpeg' },
     { id: 'ELE-02', name: 'ELECTRALYSYS', type: 'Power logistics specialist supplying steady energy flow for sustained activations.', logo: '/Electralysys.png' },
     { id: 'KSUM-03', name: 'KSUM', type: 'State platform partner amplifying innovation visibility and institutional reach.', logo: '/KSUMC.jpeg' },
-    { id: 'KEY-06', name: 'KEYVALUE', type: 'Audience intelligence partner transforming data into sponsor opportunity.', logo: '/KeyvalueC.jpeg' },
+    { id: 'KEY-06', name: 'KEYVALUE', type: 'Audience intelligence partner transforming data into sponsor opportunity.', logo: '/keyvalue.jpeg' },
     { id: 'VIS-04', name: 'VISION DYNAMICS', type: 'Analytics partner adding precision visibility and event performance insight.', logo: '/VisionDynamics.jpeg' },
     { id: 'XYZ-05', name: '.XYZ', type: 'Digital sponsor extending brand access across developer communities.', logo: '/xyz.png' },
   ];
