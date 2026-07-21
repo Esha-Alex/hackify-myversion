@@ -31,6 +31,21 @@ export default function SponsorsPage() {
     { id: 'XYZ-05', name: '.XYZ', type: 'Digital sponsor extending brand access across developer communities.', logo: '/xyz.png' },
   ];
   
+  useEffect(() => {
+    // GSAP animation for past sponsors (lazy import)
+    let gsapInstance
+    import('gsap')
+      .then(({ gsap }) => {
+        gsapInstance = gsap
+        gsap.from('.past-sponsor', { opacity: 0, y: 20, stagger: 0.12, duration: 0.8, ease: 'power3.out' })
+      })
+      .catch(() => {})
+
+    return () => {
+      if (gsapInstance && gsapInstance.kill) gsapInstance.kill()
+    }
+  }, [])
+  
   const tiers = [
     {
       tier: '01',
@@ -85,30 +100,24 @@ export default function SponsorsPage() {
         <div className="max-w-7xl mx-auto space-y-16">
 
           <div className="border-l-4 border-[#a4c875] pl-4 sm:pl-6 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-3 h-3 bg-[#a4c875] animate-pulse" />
-              <span className="text-[9px] sm:text-[10px] text-[#a4c875] uppercase tracking-[0.4em] font-bold">
-                System Status: Operational
-              </span>
-            </div>
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-[#a4c875] tracking-tighter uppercase">
               Strategic Sponsors
             </h1>
-            <p className="text-[#cec6b4] text-xs sm:text-sm md:text-base uppercase tracking-widest max-w-2xl leading-relaxed">
-              Trusted brands empowering HACKIFY '26 with strategic reach, platform visibility, and shared innovation impact.
+            <p className="text-[#cec6b4] text-[11px] sm:text-[12px] md:text-[13px] uppercase tracking-[0.25em] max-w-3xl leading-relaxed lg:whitespace-nowrap">
+              Trusted partners accelerating innovation at HACKIFY 3.0.
             </p>
           </div>
 
          {/* Devfolio Card */}
           <div>
-            <div className="text-[9px] sm:text-[10px] text-[#a4c875] uppercase tracking-[0.4em] mb-6 flex items-center gap-3">
+            <div className="text-[9px] sm:text-[10px] text-[#a4c875] uppercase tracking-[0.12em] mb-4 flex items-center gap-3">
               <span className="w-8 h-px bg-[#a4c875]" />
-              Registration Partner
+              Devfolio
               <span className="w-8 h-px bg-[#a4c875]" />
             </div>
 
             <div
-              className="tactical-card-container relative border-2 border-[#a4c875] bg-[#1b1c11] p-6 sm:p-10 group overflow-hidden"
+              className="tactical-card-container relative border border-[#a4c875]/20 bg-[#12130d] p-4 sm:p-6 group overflow-hidden transition-transform duration-300 hover:-translate-y-0.5 hover:border-[#a4c875]/40 hover:shadow-[0_20px_60px_rgba(164,200,117,0.16)]"
               style={{ clipPath: 'polygon(28px 0%, 100% 0%, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0% 100%, 0% 28px)' }}
             >
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(164,200,117,0.08),transparent_70%)] pointer-events-none" />
@@ -121,32 +130,31 @@ export default function SponsorsPage() {
                   href="https://devfolio.co/"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="flex-shrink-0 w-full lg:w-64 h-32 sm:h-44 border-2 border-[#a4c875]/40 bg-[#0e0f05] flex items-center justify-center overflow-hidden hover:border-[#a4c875] transition-colors cursor-pointer"
-                  style={{ clipPath: 'polygon(12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%, 0% 12px)' }}
+                  className="flex-shrink-0 w-44 lg:w-56 h-28 sm:h-32 border border-transparent bg-gradient-to-tr from-[#0b0c05] to-[#222418] flex items-center justify-center overflow-hidden rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.6)] transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
+                  style={{ clipPath: 'polygon(6px 0%, 100% 0%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0% 100%, 0% 6px)' }}
                 >
-                  {/* Updated src to match the official asset and alt to just "Devfolio" */}
                   <img 
                     src="/devfolio.png" 
                     alt="Devfolio" 
-                    className="max-h-full max-w-full object-contain p-4" 
+                    className="max-h-full max-w-full object-contain p-3" 
                     onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} 
                   />
-                  <div className="hidden w-full h-full items-center justify-center text-[#a4c875] font-bold text-2xl">DEVFOLIO</div>
+                  <div className="hidden w-full h-full items-center justify-center text-[#a4c875] font-bold text-xl">DEVFOLIO</div>
                 </a>
 
-                <div className="space-y-4 flex-1 text-center sm:text-left">
+                <div className="space-y-3 flex-1 text-center sm:text-left">
                   <div className="flex items-center justify-center sm:justify-start gap-3">
                     <div className="w-2 h-2 bg-[#a4c875] animate-pulse rounded-full" />
-                    <span className="text-[8px] sm:text-[10px] text-[#a4c875] uppercase tracking-[0.5em] font-bold">Primary Registration</span>
+                    <span className="text-[10px] sm:text-[12px] text-[#a4c875] font-bold">Devfolio</span>
                   </div>
-                  <h2 className="text-3xl sm:text-5xl font-bold text-[#a4c875] tracking-tighter uppercase">Devfolio</h2>
-                  <p className="text-xs sm:text-sm text-[#cec6b4] leading-relaxed sm:leading-7 max-w-2xl">
-                    Devfolio is the official registration partner for HACKIFY '26, handling team onboarding, submission management, and participant communications.
+                  <h2 className="text-2xl sm:text-3xl font-bold text-[#a4c875] tracking-tighter uppercase">Devfolio</h2>
+                  <p className="text-xs sm:text-sm text-[#cec6b4] leading-relaxed sm:leading-6 max-w-xl">
+                    <strong>Official registration partner powering HACKIFY '26.</strong>
                   </p>
-                  <div className="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6 pt-2 text-[9px] sm:text-[10px] uppercase tracking-widest text-[#a4c875]/60 font-mono">
-                    <span>✦ Team Onboarding</span>
-                    <span>✦ Submissions</span>
-                    <span>✦ Comms</span>
+                  <div className="flex flex-wrap justify-center sm:justify-start gap-3 pt-2 text-[9px] sm:text-[10px] text-[#a4c875]/80 font-mono">
+                    <span>✦ Team Registration</span>
+                    <span>✦ Project Submission</span>
+                    <span>✦ Participant Updates</span>
                   </div>
                 </div>
               </div>
@@ -159,38 +167,19 @@ export default function SponsorsPage() {
               <span className="w-8 h-px bg-[#a4c875]" /> Past Sponsors
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
               {sponsors.map((spon) => (
-                <div key={spon.id} className="tactical-card-container relative border-2 border-[#3D301D] bg-[#1b1c11] p-6 sm:p-8 min-h-0 group transition-all duration-300 hover:bg-[#1f2015] hover:border-[#a4c875]/40 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(164,200,117,0.16)] cursor-pointer" style={{ clipPath: 'polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px)' }}>
-                  <div className="flex justify-between items-start mb-6 text-[9px] sm:text-[10px] text-[#a4c875]/50">
-                    <span>ID: {spon.id}</span>
-                  </div>
-
-                  {/* Stacked on mobile, side-by-side on sm */}
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 min-w-0">
-                    <div className="w-24 sm:w-32 h-24 sm:h-32 border border-[#3D301D] bg-[#0f1005] flex items-center justify-center overflow-hidden flex-shrink-0 p-3 shadow-[inset_0_0_30px_rgba(164,200,117,0.08)]">
+                <div key={spon.id} className="tactical-card-container relative border-0 bg-transparent p-2 group transition-transform duration-400 hover:scale-105 flex items-center justify-center">
+                  <div className="past-sponsor flex flex-col items-center gap-3">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-transparent flex items-center justify-center p-1 shadow-[0_8px_20px_rgba(0,0,0,0.5)]">
                       {spon.logo ? (
-                        <img src={spon.logo} alt="logo" className="w-full h-full object-contain" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }} />
-                      ) : null}
-                      <div className={`${spon.logo ? 'hidden' : 'flex'} w-full h-full items-center justify-center text-[#a69146] font-bold text-xs sm:text-sm`}>
-                        {spon.name.substring(0, 4)}
-                      </div>
+                        <img src={spon.logo} alt={spon.name} className="w-full h-full object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
+                      ) : (
+                        <div className="text-[#a69146] font-bold">{spon.name.substring(0,3)}</div>
+                      )}
                     </div>
-                    <div className="space-y-2 min-w-0">
-                      <h3 className="text-xl sm:text-2xl font-bold text-[#e4e3d1] tracking-tight break-words">{spon.name}</h3>
-                      <p className="text-[10px] sm:text-[11px] text-[#a4c875] uppercase tracking-[0.2em] leading-relaxed break-words">{spon.type}</p>
-                      <p className="text-[9px] sm:text-[10px] text-[#cec6b4] leading-relaxed max-w-xl whitespace-normal break-words">
-                        {spon.name === 'KALKITECH' && 'Powered the event with resilient infrastructure and adaptive energy systems.'}
-                        {spon.name === 'ELECTRALYSYS' && 'Delivered dependable power logistics for every stage of the festival experience.'}
-                        {spon.name === 'KSUM' && 'Connected regional innovation channels with our event platform and audience.'}
-                        {spon.name === 'KEYVALUE' && 'Provided audience insight that sharpened sponsorship relevance and visibility.'}
-                        {spon.name === 'VISION DYNAMICS' && 'Supplied analytics clarity and performance intelligence across event operations.'}
-                        {spon.name === '.XYZ' && 'Extended brand exposure through a strong digital sponsorship presence.'}
-                      </p>
-                    </div>
+                    <div className="text-sm sm:text-base font-bold text-[#e4e3d1] text-center">{spon.name}</div>
                   </div>
-                  <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#a4c875]/30 group-hover:border-[#a4c875] transition-colors" />
-                  <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#a4c875]/30 group-hover:border-[#a4c875] transition-colors" />
                 </div>
               ))}
             </div>
@@ -235,14 +224,7 @@ export default function SponsorsPage() {
           </div>
 
           {/* Stacked mobile footer meta */}
-          <div className="pt-12 flex flex-col sm:flex-row justify-between items-center gap-4 opacity-30 border-t border-[#a4c875]/10 text-center sm:text-left">
-            <div className="text-[8px] sm:text-[10px] text-[#cec6b4] uppercase tracking-[0.3em] font-mono">
-              Auth: 09-AF-2026 // Status: Verified
-            </div>
-            <div className="text-[8px] sm:text-[10px] text-[#cec6b4] uppercase tracking-[0.3em] font-mono">
-              Encryption: AES-256 GCM
-            </div>
-          </div>
+          
         </div>
       </section>
 

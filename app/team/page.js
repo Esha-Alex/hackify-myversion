@@ -122,20 +122,11 @@ export default function TeamPage() {
                   <h4 className="font-bold text-[#e4e3d1] text-base sm:text-lg tracking-tight mb-1">{person.name}</h4>
                   <p className="text-[9px] sm:text-[10px] text-[#a4c875] uppercase tracking-widest mb-2">{person.role}</p>
                   <div className="w-8 h-px bg-[#a4c875]/30 my-2 sm:my-3" />
-                  <p className="text-[8px] sm:text-[9px] text-[#cec6b4]/50 uppercase tracking-[0.2em]">{person.tag}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="pt-12 flex flex-col sm:flex-row justify-between items-center gap-4 opacity-30 border-t border-[#a4c875]/10 text-center sm:text-left">
-            <div className="text-[8px] sm:text-[10px] text-[#cec6b4] uppercase tracking-[0.3em]">
-              Auth: LVL-5-CLEARANCE // SYSLOG: ACCESSED
-            </div>
-            <div className="text-[8px] sm:text-[10px] text-[#cec6b4] uppercase tracking-[0.3em]">
-              Encryption: AES-256 GCM
-            </div>
-          </div>
         </div>
       </section>
 

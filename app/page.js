@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import SiteFooter from './components/SiteFooter'
 import {
@@ -810,56 +811,78 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <section id="faq" className="relative overflow-hidden border-y border-white/5 bg-[#111] py-24">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(164,200,117,0.03)_0%,transparent_70%)]" />
+    <section id="faq" className="relative overflow-hidden border-y border-[#a4c875]/10 bg-[#0b0d0b] py-24">
+      <div className="absolute inset-0">
+        <Image
+          src="/bgfaq.jpeg.png"
+          alt="FAQ background"
+          fill
+          priority={false}
+          className="object-cover brightness-110 opacity-95"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(164,200,117,0.16),transparent_35%),linear-gradient(120deg,rgba(5,8,5,0.84),rgba(10,12,10,0.72))]" />
+      </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold uppercase tracking-tight text-[#a4c875] sm:text-4xl">FAQs</h2>
-          <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.35em] text-[#a4c875]/60">Hackify 3.O</p>
-        </div>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8">
+        <div className="grid gap-8 lg:grid-cols-[50%_minmax(0,1fr)] lg:items-start">
+          <div className="space-y-8 lg:max-w-[640px]">
+            <div className="mb-8">
+              <h2 className="font-heading text-3xl font-black uppercase tracking-[0.24em] text-[#a4c875] sm:text-4xl">
+                FAQs
+              </h2>
+              <p className="mt-4 font-sans text-sm leading-6 text-white/75 sm:text-base">
+                Everything you need to know before the mission begins — from registration and team rules to venue logistics and event flow.
+              </p>
+            </div>
 
-        <div className="space-y-4">
-          {FAQ_ITEMS.map((item, index) => {
-            const isOpen = openIndex === index
+            <div className="space-y-3">
+              {FAQ_ITEMS.map((item, index) => {
+                const isOpen = openIndex === index
 
-            return (
-              <div key={item.question} className="overflow-hidden rounded-xl border border-white/10 bg-black/25">
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left sm:gap-4 sm:px-6 sm:py-4"
-                  aria-expanded={isOpen}
-                >
-                  <span className="min-w-0 flex-1 font-heading text-sm font-semibold uppercase tracking-[0.02em] bg-gradient-to-r from-[#F4EBD9] via-[#B9C7A3] to-[#7A9B4F] bg-clip-text text-transparent sm:text-base sm:text-lg">
-                    {item.question}
-                  </span>
-                  <ChevronDown
-                    className={`size-5 shrink-0 text-[#a4c875] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-                    strokeWidth={2}
-                  />
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: 'easeInOut' }}
-                      className="overflow-hidden"
+                return (
+                  <div
+                    key={item.question}
+                    className="faq-card overflow-hidden rounded-[1rem] border border-[#a4c875]/25 bg-[#081009]/80 shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-250 hover:border-[#a4c875]/40"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenIndex(isOpen ? null : index)}
+                      className="group flex w-full items-center justify-between gap-3 px-3 py-2 text-left sm:gap-4 sm:px-4 sm:py-3"
+                      aria-expanded={isOpen}
                     >
-                      <div className="px-4 pb-4 pt-1 sm:px-6 sm:pb-5">
-                        <p className="font-sans text-sm leading-6 break-words bg-gradient-to-r from-[#F4EBD9] via-[#B9C7A3] to-[#7A9B4F] bg-clip-text text-transparent sm:text-base sm:leading-7">
-                          {item.answer}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            )
-          })}
+                      <span className="min-w-0 flex-1 font-stencil-military text-[12px] font-semibold uppercase tracking-[0.16em] text-[#dfe5be] sm:text-sm">
+                        {item.question}
+                        <span className="faq-cursor text-[#a4c875]" />
+                      </span>
+                      <span className={`flex h-9 w-9 items-center justify-center rounded-full border text-base font-bold transition-all duration-200 ${isOpen ? 'border-[#a4c875] bg-[#a4c875]/15 text-[#a4c875]' : 'border-[#a4c875]/30 bg-transparent text-[#a4c875]/85 group-hover:border-[#a4c875] group-hover:bg-[#a4c875]/10 group-hover:text-[#eaf0cc]'}`}>
+                        +
+                      </span>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: 'easeInOut' }}
+                          className="overflow-hidden"
+                        >
+                          <div className="border-t border-[#a4c875]/10 px-3 pb-3 pt-1 sm:px-4 sm:pb-4">
+                            <p className="font-sans text-sm leading-5 text-[#d9e6c4] sm:text-sm sm:leading-6">
+                              {item.answer}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          <div className="hidden lg:block" />
         </div>
       </div>
     </section>
@@ -930,3 +953,4 @@ export default function LandingPage() {
     </>
   )
 }
+

@@ -93,6 +93,28 @@
     @apply bg-background text-foreground;
     overflow-x: hidden;
   }
+
+  .faq-card button {
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+  }
+
+  .faq-cursor::after {
+    content: '_';
+    display: inline-block;
+    margin-left: 0.35rem;
+    opacity: 0;
+    color: #a4c875;
+    animation: blink-caret 1s steps(2, start) infinite;
+  }
+
+  .faq-card:hover .faq-cursor::after {
+    opacity: 1;
+  }
+
+  @keyframes blink-caret {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
 }
 
 /* ─── Legacy utility classes (tracks / timeline / footer) ───────────────── */
